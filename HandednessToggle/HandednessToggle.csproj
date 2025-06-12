@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net4.8</TargetFramework>
+        <LangVersion>10</LangVersion>
+        <PackageId>PuckModTemplate</PackageId>
+        <Authors>halios</Authors>
+        <Product>HandednessToggle</Product>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Libs Include="libs\*.dll"/>
+
+        <Reference Include="@(Libs)">
+            <HintPath>%(Libs.FullPath)</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+    <Target Name="PreBuildMessage" BeforeTargets="Build">
+        <Message Importance="high" Text="Building $(AssemblyName)..."/>
+    </Target>
+
+    <Target Name="PostBuildMessage" AfterTargets="Build">
+        <Message Importance="high" Text="$(AssemblyName) built successfully!"/>
+    </Target>
+</Project>
+
